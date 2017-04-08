@@ -27,6 +27,16 @@ app.post("/user/add", (req, res) => {
 		});
 });
 
+app.get("/user/:id", (req, res) => {
+	db.user.findById(req.params.id)
+		.then(function(result) {
+			res.status(200).json(result);
+		});
+		// .catch(function(err) {
+		// 	res.status(200).send("Error" + err);
+		// });
+});
+
 db.sequelize.sync()
 	.then(function() {
 		app.listen(3000, function() {
