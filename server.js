@@ -17,7 +17,21 @@ db.sequelize
 		console.log("Unable to connect to the database", err);
 	})
 
-app.listen(3000, function() {
-	console.log("listening on port 3000!");
-})
+app.post("/user/add", (req, res) => {
+	db.user.create(req.body)
+		.then(function(user) {
+			res.status(200).send("User added successfully");
+		})
+		.catch(function(err) {
+			res.status(200).send("Error adding user");
+		});
+});
+
+db.sequelize.sync()
+	.then(function() {
+		app.listen(3000, function() {
+			console.log("listening on port 3000!");
+		})
+	});
+
 
