@@ -14,6 +14,6 @@ var sequelize = new Sequelize(undefined, undefined, undefined, {
 var db = {}
 
 db.sequelize = sequelize;
-db.user      = sequelize.import("./user");
+db.user      = sequelize.import("./update_form/updateform-model");
 
 module.exports = db;
