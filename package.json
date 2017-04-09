@@ -11,12 +11,16 @@
     "express": "^4.15.2",
     "sequelize": "^3.30.4",
     "sqlite": "^2.5.0",
-    "webpack": "^2.3.3"
+    "webpack": "^2.2.1"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+
     "start": "node ./server/server.js"
+
+    
+    "watch-webpack": "webpack --progress --colors --watch"
   },
   "repository": {
     "type": "git",
