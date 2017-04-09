@@ -58,14 +58,14 @@ app.put("/user/:id", (req, res) => {
 
 app.delete("/user/:id", (req, res) => {
 	db.user.findById(req.params.id)
-	.then(function(result) {
-		return result.destroy(req.body)
-	}, err => {
-		console.log("Error:" + err);
-	})
-	.then(result => {
-		res.status(200).json(result);
-	});
+		.then(function(result) {
+			return result.destroy(req.body)
+		}, err => {
+			console.log("Error:" + err);
+		})
+		.then(result => {
+			res.status(200).json(result);
+		});
 });
 
 db.sequelize.sync()
