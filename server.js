@@ -28,7 +28,7 @@ app.post("/user/add", (req, res) => {
 });
 
 app.get("/users", (req, res) => {
-	db.users.findAll()
+	db.employees.findAll()
 	.then(user => {
 		res.status(200).json(user);
 	});
