@@ -1,12 +1,15 @@
 var express = require("express"),
 app         = express(),
-db          = require("./connection.js"),
+db          = require("../connection.js"),
 bodyParser  = require("body-parser"),
 cors        = require("cors");
+emp_router = require('../update_form/updateform-routes');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use('/user', emp_router);
 
 db.sequelize
 	.authenticate()
@@ -17,7 +20,7 @@ db.sequelize
 		console.log("Unable to connect to the database", err);
 	})
 
-app.post("/user/add", (req, res) => {
+/*app.post("/user", (req, res) => {
 	db.user.create(req.body)
 		.then(function(user) {
 			res.status(200).send("User added successfully");
@@ -67,12 +70,14 @@ app.delete("/user/:id", (req, res) => {
 			res.status(200).json(result);
 		});
 });
-
+*/
 db.sequelize.sync()
 	.then(function() {
 		app.listen(3000, function() {
 			console.log("listening on port 3000!");
 		})
 	});
+
+//module.exports = app;
 
 
